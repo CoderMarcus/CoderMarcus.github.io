@@ -42,7 +42,7 @@
   grid-template-rows: auto auto auto auto auto auto;
 }
 
-.title {
+.header {
   font-family: Ubuntu, Helvetica, sans-serif;
   color: #fff;
   font-size: 50px;
