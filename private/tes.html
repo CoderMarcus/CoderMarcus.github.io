@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#007bed">
+        <meta name="og:title" content="Homepage">
+        <meta name="og:description" content="Welcome to my website! Take a look around.">
+        <meta name="og:image" content="https://www.idkonpop.com/faviconBlue.png">
+        <link rel="icon" href="faviconBlue.png" type="image/png">
+        <title>Welcome!</title>
+        <style>
+body {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.pages {
+    padding: 100px;
+    width: calc(100% - 200px);
+    height: calc(100% - 200px);
+    display: grid;
+    align-items: center;
+    column-gap: 100px;
+}
+
+.page.left { grid-column: 1; }
+
+.page.right {
+    grid-column: 2;
+    max-width: 600px;
+}
+
+.page.left a, .page.right {
+    color: white;
+    font-family: monospace;
+    font-size: 3em;
+}
+
+#links a:hover { font-weight: bold; }
+
+#bgs * {
+    background-color: #007bed;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -3;
+    top: 0;
+    left: 0;
+}
+
+#bgs .deselected { z-index: -2; }
+#bgs .selected {
+    z-index: -1;
+    animation-name: fadeInBG;
+    animation-duration: 2s;
+}
+
+#bgs #bgDiscord { background-color: #7289da; }
+/* Image backgrounds are also supported. */
+
+@keyframes fadeInBG {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+        </style>
+    </head>
+    <body>
+        <div id="bgs">
+            <div id="bgTeleport"></div>
+            <div id="bgFormatLoader"></div>
+            <div id="bgASG"></div>
+            <div id="bgCustomQuests"></div>
+            <div id="bgDiscord"></div>
+            <div></div>
+        </div>
+        <div class="pages">
+            <div class="page left" id="links">
+                <a href="https://server.idkonpop.com/pop/teleport/">Teleporter</a>
+                <br>
+                <a href="https://server.idkonpop.com/pop/loader.html">Format Loader</a>
+                <br>
+                <a href="https://asg.idkonpop.com/">ASG Machine</a>
+                <br>
+                <a href="https://quests.idkonpop.com/">Custom Quests</a>
+                <br>
+                <a href="https://discord.gg/Bk8DECn">Poptropica Club</a>
+                <!-- Empty space for default background. -->
+            </div>
+            <div class="page right" id="descs">
+                <span hidden>Teleport anywhere in the game with the Poptropica teleporter.</span>
+                <span hidden>Load an account into a specific game format.</span>
+                <span hidden>Copy the outfits of valid ASG accounts.</span>
+                <span hidden>Play fan-made Poptropica quests with the Custom Quests extension for Google Chrome and Firefox.</span>
+                <span hidden>Chat with other Poptropica players in this Discord server.</span>
+                <span>Select a link to view its description.</span>
+            </div>
+        </div>
+        </div>
+        <script>
+"use strict";
+
+let linkIndex = -1,
+    switchLinkIndex = -1,
+    switchLinkTimer = 0; // Slight delay to prevent the page from changing rapidly while quickly moving the mouse across the link list.
+const links = document.getElementById("links").children,
+      descs = document.getElementById("descs").children,
+      bgs = document.getElementById("bgs").children;
+
+function main() {
+    for(let i = 0; i < links.length; i++)
+        if(isLink(links[i])) {
+            links[i].addEventListener("mouseover", onLinkHover);
+            links[i].addEventListener("moutout", onLinkOut);
+        }
+}
+
+function onLinkHover(evt) {
+    if(switchLinkTimer !== 0)
+        clearTimeout(switchLinkTimer);
+
+    switchLinkTimer = setTimeout(changeLinkSelection, 250, switchLinkIndex = getLinkIndex(evt.target));
+}
+
+function onLinkOut(evt) {
+    if(switchLinkTimer !== 0 && switchLinkIndex === getLinkIndex(evt.target)) {
+        cancelTimeout(switchLinkTimer);
+        switchLinkTimer = 0;
+    }
+}
+
+function changeLinkSelection(index) {
+    switchLinkTimer = 0;
+
+    if(index !== linkIndex && index === switchLinkIndex) {
+        const attr = "class";
+
+        for(let i = 0; i < descs.length; i++) {
+            bgs[i].removeAttribute(attr);
+            descs[i].hidden = true;
+        }
+
+        if(linkIndex !== -1)
+            bgs[linkIndex].setAttribute(attr, "deselected");
+
+        descs[index].hidden = false;
+        bgs[linkIndex = index].setAttribute(attr, "selected");
+    }
+}
+
+function getLinkIndex(elem) {
+    let i = 0;
+
+    while((elem = elem.previousElementSibling) !== null)
+        if(isLink(elem))
+            i++;
+
+    return i;
+}
+
+function isLink(elem) {
+    return elem.nodeName === "A";
+}
+
+main();
+        </script>
+    </body>
+</html>
