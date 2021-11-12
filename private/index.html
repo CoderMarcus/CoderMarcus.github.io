@@ -23,7 +23,18 @@
         <h1>The Backend</h1>
         <br>
         Enter your password: <input type="password" name="password" id="password">
-        <button type="submit" id="submit" ondblclick = "checkPassword()">Submit</button>
+        <button type="submit" id="submit" ondblclick = "checkPassword(password.value)">Submit</button>
     </form>
+    <script>
+        function checkPassword(){
+            var textBox = document.getElementById('password');
+            var text = textBox.value;
+            if(text == "yesdaddy"){
+                window.location.href = "https://marcus5408.github.io/private/index.html";
+            }else{
+                alert("Incorrect Password");
+            }
+        }
+    </script>
 </body>
 </html>
