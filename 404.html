@@ -1,33 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>404 Page Not Found</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Chivo+Mono" rel="stylesheet">
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,700;1,400&display=swap');
             body {
                 background-color: #222222;
                 text-align: center;
             }
-            h1 {
-                color: white;
+            .text {
                 margin: 0 auto;
+                font-family: 'Chivo Mono', monospace;
             }
-            p {
-                color: white;
-                font-size: 16px;
-                margin: 0 auto;
+            h1 {
+                color: #ffffff;
+                font-weight: 700;
+            }
+            .subtitle {
+                color: #c8c8c8;
+                font-style: italic;
+                font-weight: 300;
+            }
+            .error {
+                color: #888888;
+                font-style: italic;
+                font-weight: 200;
+            }
+            .link {
+                color: #6e6e6e;
+                font-weight: 100;
+                font-size: small;
             }
             img {
                 margin: 0 auto;
-                display: inline-block;
+                height: 50vh;
+                object-fit: contain;
+                float: right;
+            }
+            #fallingPerson:hover {
+                color:#888888;
+                transition: color 0.1s ease-in-out;
+            }
+            .centered {
+                display: flex;
+                align-items: center !important;
+                justify-content: space-between;
+                width: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0 auto;
+            }
+            @media (max-width: 500px) {
+                img {
+                    float: none;  /* Remove the float for smaller screens */
+                    display: block;  /* Make the image a block element */
+                }
+                .centered {
+                    width: 80%;  /* Reduce the width of the div element for smaller screens */
+                }
             }
         </style>
         <link href="/private/assets/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
         <link href="/private/assets/webclip.png" rel="apple-touch-icon"/>   
     </head>
     <body>
-        <img src="./private/assets/falling_person.svg" alt="Image" width=15% height=15%>
-        <h1>Oops!</h1>
-        <p>Looks like you've stumbled upon a page that doesn't exist.</p>
-        <p>404 Page Not Found</p>
+        <div class="centered">
+            <div class="text">
+                <h1 class="title text">Oops!</h1>
+                <p class="subtitle text">Looks like you've stumbled upon a page that doesn't exist.</p>
+                <p class="error text">404 Page Not Found</p>
+                <p class="link text">Click the person to go back.</p>
+            </div>
+            <img src="./private/assets/falling_person.svg" alt="fallingPerson" id="fallingPerson" width=40% height=40%>
+        </div>
     </body>
 </html>
