@@ -3,18 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="static/assets/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <title>ClubComms</title>
 </head>
 <body>
-    <h1>ClubComms</h1>
-    <p>ClubComms is a open-source app that allows you to keep up-to-date with all of your clubs.</p>
-    <p>It is currently in development.</p>
-    <p>Check back soon!</p>
-    <br>
-    <button onclick="window.location.href = '../homepage/';">Back to Homepage</button>
-    <button onclick="window.location.href = 'https://github.com/Marcus5408/clubcomms'">ClubComms GitHub Repo</button>
-    <br>
-    <button onclick="window.location.href = '../privacy/';">Privacy Policy</button>
-    <button onclick="window.location.href = '../terms/';">Terms of Service</button>
+    <div class="navbar">
+        <div class="leftnavbar">
+            <a href="home.html">
+                <img src="static/assets/webclip.png" alt="ClubComms Logo" width="50" height="50">
+            </a>
+            <div class="leftnavbarlinks">
+                <!--add logo (webclip.png)-->
+                <a class="link" href="home.html">Home</a>
+                <a class="link" href="about.html">About</a>
+                <a class="link" href="contact.html">Contact</a>
+                <a class="link" href="demo/">Demo</a>
+            </div>
+        </div>
+        <div class="rightnavbar">
+            <a class="link" href="load.html">Load Backup</a>
+            <a class="link" href="save.html">Save Backup</a>
+        </div>
+    </div>
+    <div class="sidebar">
+        <h1>List of Clubs</h1>
+        <div class="searchbar">
+            <input type="text" id="searchbar" placeholder="Search..">
+        </div>
+        <div class="options" id="options">
+            <div class="only-show-selected-clubs-option">
+                <input type="checkbox" id="only-show-selected-checkbox" name="only-show-selected-checkbox" value="only-show-selected-checkbox" checked="false"">
+                <label for="only-show-selected-checkbox">Only Show Selected Clubs</label>
+            </div>
+        </div>
+        <div class="clubs-container" id="clubs-container">
+        </div>
+    </div>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 0px 16px;
+            text-decoration: none;
+        }
+
+        .leftnavbar {
+            float: left;
+        }
+
+        .leftnavbarlinks {
+            float: left;
+        }
+
+        .rightnavbar {
+            float: right;
+            height: 100%;
+        }
+        
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .navbar img {
+            float: left;
+            align-content: normal;
+        }
+
+        .navbar a.link {
+            padding: 15px 15px; /* Adjust as needed */
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 50px;
+            left: 0;
+            background-color: #1e1e1e;
+            overflow-x: hidden;
+            padding-top: 10px;
+        }
+
+        .sidebar h1 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .searchbar {
+            padding: 0px 15px 15px 15px;
+        }
+
+        .searchbar input[type=text] {
+            width: 100%;
+            padding: 8px 20px;
+            margin: 2px 0;
+            box-sizing: border-box;
+            border: 3px solid #343434;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+
+        .searchbar input[type=text]:focus {
+            border: 3px solid #555;
+        }
+
+        .options {
+            padding: 0px 15px 15px 15px;
+        }
+
+        .only-show-selected-clubs-option {
+            padding: 0px 15px 15px 15px;
+            display: grid;
+            grid-template-columns: 0.1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .only-show-selected-clubs-option input[type=checkbox] {
+            width: 100%;
+            padding: 8px 20px;
+            margin: 2px 0;
+            box-sizing: border-box;
+            border: 3px solid #343434;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+
+        .only-show-selected-clubs-option input[type=checkbox]:focus {
+            border: 3px solid #555;
+        }
+
+        .only-show-selected-clubs-option label {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px;
+            grid-column: 2;
+        }
+
+        .only-show-selected-clubs-option input[type=checkbox]:checked {
+            background-color: #555;
+            color: white;
+        }
+
+        .clubs-container {
+            padding: 0px 15px 15px 15px;
+        }
+
+        .club {
+            padding: 0px 8px 6px 0px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #8a8a8a;
+            display: block;
+        }
+
+        .club:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .sidebar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .sidebar a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #969696;
+            display: block;
+        }
+
+        a.clicked {
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        document.querySelectorAll('.club a').forEach(function(club) {
+            club.addEventListener('click', function(event) {
+                event.preventDefault();
+                this.classList.toggle('clicked');
+            });
+        });
+
+        document.getElementById('searchbar').addEventListener('keyup', function() {
+            var searchQuery = this.value.toLowerCase();
+            document.querySelectorAll('.club a').forEach(function(club) {
+                var clubName = club.textContent || club.innerText;
+                club.parentElement.style.display = clubName.toLowerCase().indexOf(searchQuery) > -1 ? 'block' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.club a').forEach(function(club) {
+            club.addEventListener('click', function(event) {
+                event.preventDefault();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reset the search bar and checkbox
+            var searchBar = document.getElementById('searchbar');
+            var checkbox = document.getElementById('only-show-selected-checkbox');
+            if (searchBar) {
+                searchBar.value = '';
+            }
+            if (checkbox) {
+                checkbox.checked = false;
+            }
+
+            // Fetch the clubs from the JSON file
+            fetch('./static/clubdb.json')
+                .then(response => response.json())
+                .then(clubs => {
+                    var clubsContainer = document.getElementById('clubs-container');
+                    clubs.forEach(function(club) {
+                        var clubElement = document.createElement('div');
+                        clubElement.className = 'club';
+                        clubElement.style.display = 'block'; // Add display style
+                        var clubLink = document.createElement('a');
+                        clubLink.href = generateClubUrl(club.name);
+                        clubLink.textContent = club.name;
+                        // Add the click event listener to the club element
+                        clubLink.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            this.classList.toggle('bold'); 
+                            getClubInfo(this);
+                            var currentUrl = window.location.href;
+                            var clubUrl = generateClubUrl(club.name);
+                            if (this.classList.contains('bold')) {
+                                // If the club is selected, append the club name to the URL
+                                history.pushState(null, '', currentUrl + clubUrl);
+                            } else {
+                                // If the club is unselected, remove the club name from the URL
+                                var newUrl = currentUrl.replace(clubUrl, '');
+                                history.pushState(null, '', newUrl);
+                            }
+                        });
+                        clubElement.appendChild(clubLink);
+                        clubsContainer.appendChild(clubElement);
+
+                    });
+                    
+                    // Add the click event listener to the a elements
+                    document.querySelectorAll('.club a').forEach(function(club) {
+                        club.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            this.classList.toggle('clicked');
+                        });
+                    });
+
+                });
+                
+                function generateClubUrl(clubName) {
+                    // Replace spaces with hyphens and convert to lowercase
+                    var urlName = clubName.replace(/\s+/g, '-').toLowerCase();
+                    return '#' + urlName;
+                }
+                
+                var onlyShowSelectedCheckbox = document.getElementById('only-show-selected-checkbox');
+                onlyShowSelectedCheckbox.addEventListener('change', function() {
+                    var clubs = document.querySelectorAll('.club a');
+                    var isChecked = this.checked;  // Store the checkbox's checked state
+                    clubs.forEach(function(club) {
+                        if (isChecked) {  // Use the stored checked state
+                            // If the checkbox is checked, hide unselected clubs
+                            if (!club.classList.contains('bold')) {
+                                club.parentElement.style.display = 'none';
+                            }
+                        } else {
+                            // If the checkbox is unchecked, show all clubs
+                            club.parentElement.style.display = 'block';
+                        }
+                    });
+                });
+                // Reset the URL to its original state
+                var originalUrl = window.location.href.split('#')[0];
+                history.replaceState(null, '', originalUrl);
+    
+                // Reset the search bar and checkbox
+                var searchBar = document.getElementById('searchbar');
+                var checkbox = document.getElementById('only-show-selected-checkbox');
+                if (searchBar) {
+                    searchBar.value = '';
+                }
+                if (checkbox) {
+                    checkbox.checked = false;
+                }
+            });
+    </script>
 </body>
 </html>
