@@ -15,10 +15,8 @@
             </a>
             <div class="leftnavbarlinks">
                 <!--add logo (webclip.png)-->
-                <a class="link" href="home.html">Home</a>
-                <a class="link" href="about.html">About</a>
-                <a class="link" href="contact.html">Contact</a>
-                <a class="link" href="demo/">Demo</a>
+                <a class="link" href="#">Home</a>
+                <a class="link" href="demo/">Video/ Demo</a>
             </div>
         </div>
         <div class="rightnavbar">
@@ -38,6 +36,17 @@
             </div>
         </div>
         <div class="clubs-container" id="clubs-container">
+        </div>
+    </div>
+    <div class="main" id="main">
+        <h1 class="club-name" id="club-name"></h1>
+        <h2 class="club-advisor" id="club-advisor"></h2>
+        <h2 class="club-rooms" id="club-rooms"></h2>
+        <h2 class="club-days" id="club-days"></h2>
+        <h2 class="club-frequency" id="club-frequency"></h2>
+        <h2 class="club-instagram" id="club-instagram"></h2>
+        <div class="insta-feed" id="insta-feed">
+            
         </div>
     </div>
     <style>
@@ -210,8 +219,75 @@
             font-weight: bold;
             color: #ffffff;
         }
+
+        .main {
+            margin-left: 250px; /* Same as the width of the sidenav */
+            margin-top: 100px;
+            padding: 0px 50px;
+            background-color: #000000;
+        }
+
+        .main h1 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main h2 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main h3 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main h4 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main h5 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main h6 {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main p {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main a {
+            color: #f2f2f2;
+            text-align: left;
+            padding-left: 15px
+        }
+
+        .main a:hover {
+            color: #ffffff;
+        }
+
+        .main a:active {
+            color: #ffffff;
+        }
+
     </style>
     <script>
+        window.onload = function() {
+            alert("This is a very rough draft that probably contains unforseen bugs. Consider them as features for now, I might fix them later if I end up revisiting this project later. The only clubs that are implemented are Girls Who Code, TechCodes, and National Society of Black Engineers. ");
+        }
         document.querySelectorAll('.club a').forEach(function(club) {
             club.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -259,8 +335,7 @@
                         // Add the click event listener to the club element
                         clubLink.addEventListener('click', function(event) {
                             event.preventDefault();
-                            this.classList.toggle('bold'); 
-                            getClubInfo(this);
+                            this.classList.toggle('bold');
                             var currentUrl = window.location.href;
                             var clubUrl = generateClubUrl(club.name);
                             if (this.classList.contains('bold')) {
@@ -282,9 +357,85 @@
                         club.addEventListener('click', function(event) {
                             event.preventDefault();
                             this.classList.toggle('clicked');
+                            
+                            var clubName = this.textContent || this.innerText;
+                            /* get club instagram from clubdb.json. if none found, set it to not found*/
+                            var clubInstagram = clubs.find(function(club) {
+                                return club.name === clubName;
+                            }).instagram || "Not Found";
+                            /* get club advisor from clubdb.json. if none found, set it to not found*/
+                            var clubAdvisor = clubs.find(function(club) {
+                                return club.name === clubName;
+                            }).advisor || "Not Found";
+                            /* get club room from clubdb.json. if none found, set it to not found*/
+                            var clubRoom = clubs.find(function(club) {
+                                return club.name === clubName;
+                            }).rooms || "Not Found";
+                            /* get club meeting days from clubdb.json. if none found, set it to not found*/
+                            var clubMeetingDays = clubs.find(function(club) {
+                                return club.name === clubName;
+                            }).days || "Not Found";
+                            /* get club frequency from clubdb.json. if none found, set it to not found*/
+                            var clubFrequency = clubs.find(function(club) {
+                                return club.name === clubName;
+                            }).frequency || "Not Found";
+
+                            /* set elements in id "main" div to club info */
+                            document.getElementById('club-name').innerHTML = clubName;
+                            document.getElementById('club-advisor').innerHTML = "Advisor: " + clubAdvisor;
+                            document.getElementById('club-rooms').innerHTML = "Room: " + clubRoom;
+                            document.getElementById('club-days').innerHTML = "Meeting Days: " + clubMeetingDays;
+                            document.getElementById('club-frequency').innerHTML = "Frequency: " + clubFrequency;
+                            document.getElementById('club-instagram').innerHTML = "Instagram: @" + clubInstagram;
+
+                            if (clubInstagram != "Not Found") {
+                                const request_headers = new Headers({
+                                    'Accept': 'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                                    'Accept-Encoding': 'gzip, deflate, br',
+                                    'Accept-Language': 'en-US,en;q=0.5',
+                                    'Connection': 'keep-alive',
+                                    'DNT': '1',
+                                    'Host': 'www.instagram.com',
+                                    'Sec-Fetch-Dest': 'document',
+                                    'Sec-Fetch-Mode': 'navigate',
+                                    'Sec-Fetch-Site': 'none',
+                                    'Sec-Fetch-User': '?1',
+                                    'Upgrade-Insecure-Requests': '1',
+                                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0'
+                                });
+                                /* get club instagram feed from instagram api */
+                                const ig_url = 'https://corsproxy.org/?' + encodeURIComponent('https://www.instagram.com/' + clubInstagram + '/?__a=1&__d=dis');
+                                fetch(ig_url, {
+                                    method: 'GET',
+                                    headers: request_headers
+                                })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        /* get the id key */
+                                        var id = data.graphql.user.id;
+                                    });
+                                const ig_graphql_url = 'https://corsproxy.org/?' + encodeURIComponent('https://www.instagram.com/graphql/query/?query_hash=e769aa130647d2354c40ea6a439bfc08&variables=%7B%22id%22%253A%22' + id + '"%2C"first"%3A 12}')
+                                fetch(ig_graphql_url, {
+                                    method: 'GET',
+                                    headers: request_headers
+                                })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        /* get the images */
+                                        var images = data.data.user.edge_owner_to_timeline_media.edges;
+                                        /* loop through the images */
+                                        images.forEach(function(image) {
+                                            /* create a new image element */
+                                            var imageElement = document.createElement('img');
+                                            /* set the image source to the image url */
+                                            imageElement.src = image.node.display_url;
+                                            /* append the image to the insta-feed div */
+                                            document.getElementById('insta-feed').appendChild(imageElement);
+                                        });
+                                    });
+                            }
                         });
                     });
-
                 });
                 
                 function generateClubUrl(clubName) {
