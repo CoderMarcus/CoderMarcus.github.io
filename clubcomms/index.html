@@ -1,478 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link href="static/assets/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="static/assets/favicon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
     <title>ClubComms</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="navbar">
-        <div class="leftnavbar">
-            <a href="home.html">
-                <img src="static/assets/webclip.png" alt="ClubComms Logo" width="50" height="50">
-            </a>
-            <div class="leftnavbarlinks">
-                <a class="link" href="#">Home</a>
-                <a class="link" href="demo/">Video/ Demo</a>
-            </div>
+      <div class="leftnavbar">
+        <a href="">
+          <img
+            src="static/assets/webclip.png"
+            alt="ClubComms Logo"
+            width="50"
+            height="50"
+          />
+        </a>
+        <div class="leftnavbarlinks">
+          <a class="link" href="#">Home</a>
+          <a class="link" href="demo/">Video/ Demo</a>
         </div>
-        <div class="rightnavbar">
-            <a class="link" href="load.html">Load Backup</a>
-            <a class="link" href="save.html">Save Backup</a>
-        </div>
+      </div>
+      <div class="rightnavbar">
+        <a class="link" href="load.html">Load Backup</a>
+        <a class="link" href="save.html">Save Backup</a>
+      </div>
     </div>
     <div class="sidebar">
-        <h1>List of Clubs</h1>
-        <div class="searchbar">
-            <input type="text" id="searchbar" placeholder="Search..">
+      <h1>List of Clubs</h1>
+      <div class="searchbar">
+        <input type="text" id="searchbar" placeholder="Search.." />
+      </div>
+      <div class="options" id="options">
+        <div class="only-show-selected-clubs-option">
+          <input type="checkbox" id="only-show-selected-checkbox"
+          name="only-show-selected-checkbox" value="only-show-selected-checkbox"
+          checked="false"">
+          <label for="only-show-selected-checkbox">
+            Only Show Selected Clubs
+          </label>
         </div>
-        <div class="options" id="options">
-            <div class="only-show-selected-clubs-option">
-                <input type="checkbox" id="only-show-selected-checkbox" name="only-show-selected-checkbox" value="only-show-selected-checkbox" checked="false"">
-                <label for="only-show-selected-checkbox">Only Show Selected Clubs</label>
-            </div>
-        </div>
-        <div class="clubs-container" id="clubs-container">
-        </div>
+      </div>
+      <div class="clubs-container" id="clubs-container"></div>
     </div>
     <div class="main" id="main">
+      <div class="info">
         <h1 class="club-name" id="club-name"></h1>
         <h2 class="club-advisor" id="club-advisor"></h2>
         <h2 class="club-rooms" id="club-rooms"></h2>
         <h2 class="club-days" id="club-days"></h2>
         <h2 class="club-frequency" id="club-frequency"></h2>
         <h2 class="club-instagram" id="club-instagram"></h2>
-        <div class="insta-feed" id="insta-feed">
-            
-        </div>
+      </div>
+      <div class="insta-feed" id="insta-feed"></div>
     </div>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #000000;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #000000;
+        margin: 0;
+        padding: 0;
+      }
 
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 50px;
-        }
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+      }
 
-        .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 0px 16px;
-            text-decoration: none;
-        }
+      .navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 0px 16px;
+        text-decoration: none;
+      }
 
-        .leftnavbar {
-            float: left;
-        }
+      .leftnavbar {
+        float: left;
+      }
 
-        .leftnavbarlinks {
-            float: left;
-        }
+      .leftnavbarlinks {
+        float: left;
+      }
 
-        .rightnavbar {
-            float: right;
-            height: 100%;
-        }
-        
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+      .rightnavbar {
+        float: right;
+        height: 100%;
+      }
 
-        .navbar a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
 
-        .navbar img {
-            float: left;
-            align-content: normal;
-        }
+      .navbar a.active {
+        background-color: #4caf50;
+        color: white;
+      }
 
-        .navbar a.link {
-            padding: 15px 15px; /* Adjust as needed */
-        }
+      .navbar img {
+        float: left;
+        align-content: normal;
+      }
 
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            z-index: 1;
-            top: 50px;
-            left: 0;
-            background-color: #1e1e1e;
-            overflow-x: hidden;
-            padding-top: 10px;
-        }
+      .navbar a.link {
+        padding: 15px 15px; /* Adjust as needed */
+      }
 
-        .sidebar h1 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 50px;
+        left: 0;
+        background-color: #1e1e1e;
+        overflow-x: hidden;
+        padding-top: 10px;
+      }
 
-        .searchbar {
-            padding: 0px 15px 15px 15px;
-        }
+      .sidebar h1 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .searchbar input[type=text] {
-            width: 100%;
-            padding: 8px 20px;
-            margin: 2px 0;
-            box-sizing: border-box;
-            border: 3px solid #343434;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-            outline: none;
-        }
+      .searchbar {
+        padding: 0px 15px 15px 15px;
+      }
 
-        .searchbar input[type=text]:focus {
-            border: 3px solid #555;
-        }
+      .searchbar input[type="text"] {
+        width: 100%;
+        padding: 8px 20px;
+        margin: 2px 0;
+        box-sizing: border-box;
+        border: 3px solid #343434;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+      }
 
-        .options {
-            padding: 0px 15px 15px 15px;
-        }
+      .searchbar input[type="text"]:focus {
+        border: 3px solid #555;
+      }
 
-        .only-show-selected-clubs-option {
-            padding: 0px 15px 15px 15px;
-            display: grid;
-            grid-template-columns: 0.1fr 1fr;
-            grid-gap: 10px;
-        }
+      .options {
+        padding: 0px 15px 15px 15px;
+      }
 
-        .only-show-selected-clubs-option input[type=checkbox] {
-            width: 100%;
-            padding: 8px 20px;
-            margin: 2px 0;
-            box-sizing: border-box;
-            border: 3px solid #343434;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-            outline: none;
-        }
+      .only-show-selected-clubs-option {
+        padding: 0px 15px 15px 15px;
+        display: grid;
+        grid-template-columns: 0.1fr 1fr;
+        grid-gap: 10px;
+      }
 
-        .only-show-selected-clubs-option input[type=checkbox]:focus {
-            border: 3px solid #555;
-        }
+      .only-show-selected-clubs-option input[type="checkbox"] {
+        width: 100%;
+        padding: 8px 20px;
+        margin: 2px 0;
+        box-sizing: border-box;
+        border: 3px solid #343434;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+      }
 
-        .only-show-selected-clubs-option label {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px;
-            grid-column: 2;
-        }
+      .only-show-selected-clubs-option input[type="checkbox"]:focus {
+        border: 3px solid #555;
+      }
 
-        .only-show-selected-clubs-option input[type=checkbox]:checked {
-            background-color: #555;
-            color: white;
-        }
+      .only-show-selected-clubs-option label {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+        grid-column: 2;
+      }
 
-        .clubs-container {
-            padding: 0px 15px 15px 15px;
-        }
+      .only-show-selected-clubs-option input[type="checkbox"]:checked {
+        background-color: #555;
+        color: white;
+      }
 
-        .club {
-            padding: 0px 8px 6px 0px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #8a8a8a;
-            display: block;
-        }
+      .clubs-container {
+        padding: 0px 15px 15px 15px;
+      }
 
-        .club:hover {
-            background-color: #555;
-            color: white;
-        }
+      .club {
+        padding: 0px 8px 6px 0px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #8a8a8a;
+        display: block;
+      }
 
-        .sidebar a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
+      .club:hover {
+        background-color: #555;
+        color: white;
+      }
 
-        .sidebar a {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            color: #969696;
-            display: block;
-        }
+      .sidebar a.active {
+        background-color: #4caf50;
+        color: white;
+      }
 
-        a.clicked {
-            font-weight: bold;
-            color: #ffffff;
-        }
+      .sidebar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: #969696;
+        display: block;
+      }
 
-        .main {
-            margin-left: 250px; /* Same as the width of the sidenav */
-            margin-top: 100px;
-            padding: 0px 50px;
-            background-color: #000000;
-        }
+      a.clicked {
+        font-weight: bold;
+        color: #ffffff;
+      }
 
-        .main h1 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main {
+        margin-left: 250px; /* Same as the width of the sidenav */
+        margin-top: 100px;
+        padding: 0px 50px;
+        background-color: #000000;
+      }
 
-        .main h2 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main h1 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main h3 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main h2 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main h4 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main h3 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main h5 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main h4 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main h6 {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main h5 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main p {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main h6 {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main a {
-            color: #f2f2f2;
-            text-align: left;
-            padding-left: 15px
-        }
+      .main p {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main a:hover {
-            color: #ffffff;
-        }
+      .main a {
+        color: #f2f2f2;
+        text-align: left;
+        padding-left: 15px;
+      }
 
-        .main a:active {
-            color: #ffffff;
-        }
+      .main a:hover {
+        color: #ffffff;
+      }
 
+      .main a:active {
+        color: #ffffff;
+      }
     </style>
     <script>
-        window.onload = function() {
-            alert("This is a very rough draft that probably contains unforseen bugs. Consider them as features for now, I might fix them later if I end up revisiting this project later. The only clubs that are implemented are Girls Who Code, TechCodes, and National Society of Black Engineers. ");
+      window.onload = function () {
+        // alert(
+        //   "This is a very rough draft that probably contains unforseen bugs. Consider them as features for now, I might fix them later if I end up revisiting this project later. The only clubs that are implemented are Girls Who Code, TechCodes, and National Society of Black Engineers."
+        // );
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://cors-test.appspot.com/test", true);
+        xhr.setRequestHeader("Accept", "application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8");
+        xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
+        xhr.setRequestHeader("Upgrade-Insecure-Requests", "1");
+        xhr.setRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0");
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhr.setRequestHeader("access-control-allow-methods", "GET, POST, DELETE, HEAD, OPTIONS, PATCH, PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, PUT");
+        xhr.setRequestHeader('access-control-allow-origin', 'http://127.0.0.1:5500/');
+        xhr.setRequestHeader('access-control-expose-headers', '*');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status != 200) {
+            // CORS is disabled, add note to main div
+            var mainDiv = document.querySelector(".main");
+            if (mainDiv) {
+              var note = document.createElement("p");
+              note.textContent =
+                "CORS is disabled. The Instagram feed will not work. Please use a browser extension to enable CORS, such as ";
+
+              var link = document.createElement("a");
+              link.href =
+                "https://webextension.org/listing/access-control.html";
+              link.textContent = "this one";
+              link.target = "_blank"; // Open link in new tab
+
+              note.appendChild(link);
+              mainDiv.appendChild(note);
+            }
+          }
+        };
+        xhr.send();
+      };
+      document.querySelectorAll(".club a").forEach(function (club) {
+        club.addEventListener("click", function (event) {
+          event.preventDefault();
+          this.classList.toggle("clicked");
+        });
+      });
+
+      document
+        .getElementById("searchbar")
+        .addEventListener("keyup", function () {
+          var searchQuery = this.value.toLowerCase();
+          document.querySelectorAll(".club a").forEach(function (club) {
+            var clubName = club.textContent || club.innerText;
+            club.parentElement.style.display =
+              clubName.toLowerCase().indexOf(searchQuery) > -1
+                ? "block"
+                : "none";
+          });
+        });
+
+      document.querySelectorAll(".club a").forEach(function (club) {
+        club.addEventListener("click", function (event) {
+          event.preventDefault();
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Reset the search bar and checkbox
+        var searchBar = document.getElementById("searchbar");
+        var checkbox = document.getElementById("only-show-selected-checkbox");
+        if (searchBar) {
+          searchBar.value = "";
         }
-        document.querySelectorAll('.club a').forEach(function(club) {
-            club.addEventListener('click', function(event) {
+        if (checkbox) {
+          checkbox.checked = false;
+        }
+
+        // Fetch the clubs from the JSON file
+        fetch("./static/clubdb.json")
+          .then((response) => response.json())
+          .then((clubs) => {
+            var clubsContainer = document.getElementById("clubs-container");
+            clubs.forEach(function (club) {
+              var clubElement = document.createElement("div");
+              clubElement.className = "club";
+              clubElement.style.display = "block"; // Add display style
+              var clubLink = document.createElement("a");
+              clubLink.href = generateClubUrl(club.name);
+              clubLink.textContent = club.name;
+              // Add the click event listener to the club element
+              clubLink.addEventListener("click", function (event) {
                 event.preventDefault();
-                this.classList.toggle('clicked');
+                this.classList.toggle("bold");
+                var currentUrl = window.location.href;
+                var clubUrl = generateClubUrl(club.name);
+                if (this.classList.contains("bold")) {
+                  // If the club is selected, append the club name to the URL
+                  history.pushState(null, "", currentUrl + clubUrl);
+                } else {
+                  // If the club is unselected, remove the club name from the URL
+                  var newUrl = currentUrl.replace(clubUrl, "");
+                  history.pushState(null, "", newUrl);
+                }
+              });
+              clubElement.appendChild(clubLink);
+              clubsContainer.appendChild(clubElement);
             });
-        });
 
-        document.getElementById('searchbar').addEventListener('keyup', function() {
-            var searchQuery = this.value.toLowerCase();
-            document.querySelectorAll('.club a').forEach(function(club) {
-                var clubName = club.textContent || club.innerText;
-                club.parentElement.style.display = clubName.toLowerCase().indexOf(searchQuery) > -1 ? 'block' : 'none';
-            });
-        });
-
-        document.querySelectorAll('.club a').forEach(function(club) {
-            club.addEventListener('click', function(event) {
+            // Add the click event listener to the a elements
+            document.querySelectorAll(".club a").forEach(function (club) {
+              club.addEventListener("click", function (event) {
                 event.preventDefault();
+                this.classList.toggle("clicked");
+
+                var clubName = this.textContent || this.innerText;
+                /* get club instagram from clubdb.json. if none found, set it to not found*/
+                var clubInstagram =
+                  clubs.find(function (club) {
+                    return club.name === clubName;
+                  }).instagram || "Not Found";
+                /* get club advisor from clubdb.json. if none found, set it to not found*/
+                var clubAdvisor =
+                  clubs.find(function (club) {
+                    return club.name === clubName;
+                  }).advisor || "Not Found";
+                /* get club room from clubdb.json. if none found, set it to not found*/
+                var clubRoom =
+                  clubs.find(function (club) {
+                    return club.name === clubName;
+                  }).rooms || "Not Found";
+                /* get club meeting days from clubdb.json. if none found, set it to not found*/
+                var clubMeetingDays =
+                  clubs.find(function (club) {
+                    return club.name === clubName;
+                  }).days || "Not Found";
+                /* get club frequency from clubdb.json. if none found, set it to not found*/
+                var clubFrequency =
+                  clubs.find(function (club) {
+                    return club.name === clubName;
+                  }).frequency || "Not Found";
+
+                /* set elements in id "main" div to club info */
+                document.getElementById("club-name").innerHTML = clubName;
+                document.getElementById("club-advisor").innerHTML =
+                  "Advisor: " + clubAdvisor;
+                document.getElementById("club-rooms").innerHTML =
+                  "Room: " + clubRoom;
+                document.getElementById("club-days").innerHTML =
+                  "Meeting Days: " + clubMeetingDays;
+                document.getElementById("club-frequency").innerHTML =
+                  "Frequency: " + clubFrequency;
+                document.getElementById("club-instagram").innerHTML =
+                  "Instagram: @" + clubInstagram;
+
+                if (clubInstagram != "Not Found") {
+                  const request_headers = new Headers({
+                    "Accept":
+                      "application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "en-US,en;q=0.5",
+                    "Connection": "keep-alive",
+                    "DNT": "1",
+                    "Host": "www.instagram.com",
+                    "Sec-Fetch-Dest": "document",
+                    "Sec-Fetch-Mode": "navigate",
+                    "Sec-Fetch-Site": "none",
+                    "Sec-Fetch-User": "?1",
+                    "Upgrade-Insecure-Requests": "1",
+                    "User-Agent":
+                      "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                      "GET, POST, DELETE, HEAD, OPTIONS, PATCH, PROPFIND, PROPPATCH, MKCOL, COPY, MOVE, LOCK, PUT",
+                    "access-control-allow-origin": "https://www.instagram.com",
+                  });
+                  /* get club instagram feed from instagram api */
+                  const ig_url =
+                    "https://corsproxy.org/?" +
+                    encodeURIComponent(
+                      "https://www.instagram.com/" +
+                        clubInstagram +
+                        "/?__a=1&__d=dis"
+                    );
+                  fetch(ig_url, {
+                    method: "GET",
+                    headers: request_headers,
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      /* get the id key */
+                      var id = data.graphql.user.id;
+                    });
+                  const ig_graphql_url =
+                    "https://corsproxy.org/?" +
+                    encodeURIComponent(
+                      "https://www.instagram.com/graphql/query/?query_hash=e769aa130647d2354c40ea6a439bfc08&variables=%7B%22id%22%253A%22" +
+                        id +
+                        '"%2C"first"%3A 12}'
+                    );
+                  fetch(ig_graphql_url, {
+                    method: "GET",
+                    headers: request_headers,
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      /* get the images */
+                      console.log(data);
+                      var images =
+                        data.data.user.edge_owner_to_timeline_media.edges;
+                      /* loop through the images */
+                      images.forEach(function (image) {
+                        /* create a new image element */
+                        var imageElement = document.createElement("img");
+                        /* set the image source to the image url */
+                        imageElement.src = image.node.display_url;
+                        /* append the image to the insta-feed div */
+                        document
+                          .getElementById("insta-feed")
+                          .appendChild(imageElement);
+                      });
+                    });
+                }
+              });
             });
+          });
+
+        function generateClubUrl(clubName) {
+          // Replace spaces with hyphens and convert to lowercase
+          var urlName = clubName.replace(/\s+/g, "-").toLowerCase();
+          return "#" + urlName;
+        }
+
+        var onlyShowSelectedCheckbox = document.getElementById(
+          "only-show-selected-checkbox"
+        );
+        onlyShowSelectedCheckbox.addEventListener("change", function () {
+          var clubs = document.querySelectorAll(".club a");
+          var isChecked = this.checked; // Store the checkbox's checked state
+          clubs.forEach(function (club) {
+            if (isChecked) {
+              // Use the stored checked state
+              // If the checkbox is checked, hide unselected clubs
+              if (!club.classList.contains("bold")) {
+                club.parentElement.style.display = "none";
+              }
+            } else {
+              // If the checkbox is unchecked, show all clubs
+              club.parentElement.style.display = "block";
+            }
+          });
         });
+        // Reset the URL to its original state
+        var originalUrl = window.location.href.split("#")[0];
+        history.replaceState(null, "", originalUrl);
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Reset the search bar and checkbox
-            var searchBar = document.getElementById('searchbar');
-            var checkbox = document.getElementById('only-show-selected-checkbox');
-            if (searchBar) {
-                searchBar.value = '';
-            }
-            if (checkbox) {
-                checkbox.checked = false;
-            }
-
-            // Fetch the clubs from the JSON file
-            fetch('./static/clubdb.json')
-                .then(response => response.json())
-                .then(clubs => {
-                    var clubsContainer = document.getElementById('clubs-container');
-                    clubs.forEach(function(club) {
-                        var clubElement = document.createElement('div');
-                        clubElement.className = 'club';
-                        clubElement.style.display = 'block'; // Add display style
-                        var clubLink = document.createElement('a');
-                        clubLink.href = generateClubUrl(club.name);
-                        clubLink.textContent = club.name;
-                        // Add the click event listener to the club element
-                        clubLink.addEventListener('click', function(event) {
-                            event.preventDefault();
-                            this.classList.toggle('bold');
-                            var currentUrl = window.location.href;
-                            var clubUrl = generateClubUrl(club.name);
-                            if (this.classList.contains('bold')) {
-                                // If the club is selected, append the club name to the URL
-                                history.pushState(null, '', currentUrl + clubUrl);
-                            } else {
-                                // If the club is unselected, remove the club name from the URL
-                                var newUrl = currentUrl.replace(clubUrl, '');
-                                history.pushState(null, '', newUrl);
-                            }
-                        });
-                        clubElement.appendChild(clubLink);
-                        clubsContainer.appendChild(clubElement);
-
-                    });
-                    
-                    // Add the click event listener to the a elements
-                    document.querySelectorAll('.club a').forEach(function(club) {
-                        club.addEventListener('click', function(event) {
-                            event.preventDefault();
-                            this.classList.toggle('clicked');
-                            
-                            var clubName = this.textContent || this.innerText;
-                            /* get club instagram from clubdb.json. if none found, set it to not found*/
-                            var clubInstagram = clubs.find(function(club) {
-                                return club.name === clubName;
-                            }).instagram || "Not Found";
-                            /* get club advisor from clubdb.json. if none found, set it to not found*/
-                            var clubAdvisor = clubs.find(function(club) {
-                                return club.name === clubName;
-                            }).advisor || "Not Found";
-                            /* get club room from clubdb.json. if none found, set it to not found*/
-                            var clubRoom = clubs.find(function(club) {
-                                return club.name === clubName;
-                            }).rooms || "Not Found";
-                            /* get club meeting days from clubdb.json. if none found, set it to not found*/
-                            var clubMeetingDays = clubs.find(function(club) {
-                                return club.name === clubName;
-                            }).days || "Not Found";
-                            /* get club frequency from clubdb.json. if none found, set it to not found*/
-                            var clubFrequency = clubs.find(function(club) {
-                                return club.name === clubName;
-                            }).frequency || "Not Found";
-
-                            /* set elements in id "main" div to club info */
-                            document.getElementById('club-name').innerHTML = clubName;
-                            document.getElementById('club-advisor').innerHTML = "Advisor: " + clubAdvisor;
-                            document.getElementById('club-rooms').innerHTML = "Room: " + clubRoom;
-                            document.getElementById('club-days').innerHTML = "Meeting Days: " + clubMeetingDays;
-                            document.getElementById('club-frequency').innerHTML = "Frequency: " + clubFrequency;
-                            document.getElementById('club-instagram').innerHTML = "Instagram: @" + clubInstagram;
-
-                            if (clubInstagram != "Not Found") {
-                                const request_headers = new Headers({
-                                    'Accept': 'application/json,text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-                                    'Accept-Encoding': 'gzip, deflate, br',
-                                    'Accept-Language': 'en-US,en;q=0.5',
-                                    'Connection': 'keep-alive',
-                                    'DNT': '1',
-                                    'Host': 'www.instagram.com',
-                                    'Sec-Fetch-Dest': 'document',
-                                    'Sec-Fetch-Mode': 'navigate',
-                                    'Sec-Fetch-Site': 'none',
-                                    'Sec-Fetch-User': '?1',
-                                    'Upgrade-Insecure-Requests': '1',
-                                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0'
-                                });
-                                /* get club instagram feed from instagram api */
-                                const ig_url = 'https://corsproxy.org/?' + encodeURIComponent('https://www.instagram.com/' + clubInstagram + '/?__a=1&__d=dis');
-                                fetch(ig_url, {
-                                    method: 'GET',
-                                    headers: request_headers
-                                })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        /* get the id key */
-                                        var id = data.graphql.user.id;
-                                    });
-                                const ig_graphql_url = 'https://corsproxy.org/?' + encodeURIComponent('https://www.instagram.com/graphql/query/?query_hash=e769aa130647d2354c40ea6a439bfc08&variables=%7B%22id%22%253A%22' + id + '"%2C"first"%3A 12}')
-                                fetch(ig_graphql_url, {
-                                    method: 'GET',
-                                    headers: request_headers
-                                })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        /* get the images */
-                                        var images = data.data.user.edge_owner_to_timeline_media.edges;
-                                        /* loop through the images */
-                                        images.forEach(function(image) {
-                                            /* create a new image element */
-                                            var imageElement = document.createElement('img');
-                                            /* set the image source to the image url */
-                                            imageElement.src = image.node.display_url;
-                                            /* append the image to the insta-feed div */
-                                            document.getElementById('insta-feed').appendChild(imageElement);
-                                        });
-                                    });
-                            }
-                        });
-                    });
-                });
-                
-                function generateClubUrl(clubName) {
-                    // Replace spaces with hyphens and convert to lowercase
-                    var urlName = clubName.replace(/\s+/g, '-').toLowerCase();
-                    return '#' + urlName;
-                }
-                
-                var onlyShowSelectedCheckbox = document.getElementById('only-show-selected-checkbox');
-                onlyShowSelectedCheckbox.addEventListener('change', function() {
-                    var clubs = document.querySelectorAll('.club a');
-                    var isChecked = this.checked;  // Store the checkbox's checked state
-                    clubs.forEach(function(club) {
-                        if (isChecked) {  // Use the stored checked state
-                            // If the checkbox is checked, hide unselected clubs
-                            if (!club.classList.contains('bold')) {
-                                club.parentElement.style.display = 'none';
-                            }
-                        } else {
-                            // If the checkbox is unchecked, show all clubs
-                            club.parentElement.style.display = 'block';
-                        }
-                    });
-                });
-                // Reset the URL to its original state
-                var originalUrl = window.location.href.split('#')[0];
-                history.replaceState(null, '', originalUrl);
-    
-                // Reset the search bar and checkbox
-                var searchBar = document.getElementById('searchbar');
-                var checkbox = document.getElementById('only-show-selected-checkbox');
-                if (searchBar) {
-                    searchBar.value = '';
-                }
-                if (checkbox) {
-                    checkbox.checked = false;
-                }
-            });
+        // Reset the search bar and checkbox
+        var searchBar = document.getElementById("searchbar");
+        var checkbox = document.getElementById("only-show-selected-checkbox");
+        if (searchBar) {
+          searchBar.value = "";
+        }
+        if (checkbox) {
+          checkbox.checked = false;
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
