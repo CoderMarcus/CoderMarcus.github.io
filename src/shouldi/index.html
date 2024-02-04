@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMS-er</title>
+</head>
+<body>
+    <div class="choose">
+        <h1>Should I Kill Myself? 🤔</h1>
+        <div class="buttons">
+            <div class="yes">Yes</div>
+            <div class="no">No</div>
+        </div>
+    </div>
+    <div class="yes_result">
+        <!-- redirect to webpage -->
+        <h1>Goodbye.</h1>
+        <image src="https://i.kym-cdn.com/photos/images/newsfeed/001/583/321/be8.jpg" alt="Goodbye" class="grabber" width="500" height="500">
+    </div>
+    <div class="no_result">
+        <h1>No!</h1>
+    </div>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .choose {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+        }
+        .yes, .no {
+            padding: 10px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        .yes:hover, .no:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .yes_result, .no_result {
+            display: none;
+        }
+        .grabber {
+            size: 200px;
+        }
+    </style>
+    <script>
+        const choose = document.querySelector('.choose');
+        const yes = document.querySelector('.yes');
+        const no = document.querySelector('.no');
+        const yes_result = document.querySelector('.yes_result');
+        const grabber = document.querySelector('.grabber');
+        const no_result = document.querySelector('.no_result');
+
+        yes.addEventListener('click', () => {
+            yes_result.style.display = 'block';
+            no_result.style.display = 'none';
+            choose.style.display = 'none';
+            
+            /* apply transition first */
+            grabber.style.transition = 'transform 0.5s cubic-bezier(.4, 0, 0.5, 1)';
+
+            /* apply transform after a short delay */
+            setTimeout(() => {
+                grabber.style.transform = 'scale(10)';
+            }, 100); // adjust delay as needed
+        });
+
+        no.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            /* get random position */
+            let x = Math.random() * (window.innerWidth - no.offsetWidth);
+            let y = Math.random() * (window.innerHeight - no.offsetHeight);
+
+            /* account for current position by subtracting current pos */
+            x -= no.offsetLeft;
+            y -= no.offsetTop;
+
+            no.style.transform = `translate(${x}px, ${y}px)`;
+            no.style.transition = 'transform 0.5s cubic-bezier(.4, 0, 0.5, 1)';
+        });
+    </script>
+</body>
+</html>
