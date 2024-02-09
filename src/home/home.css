@@ -185,8 +185,8 @@ h1 {
 /* Media query for mobile devices */
 @media (max-width: 1000px) {
   .grid {
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 20vh 20vh 50px 20vh 20vh 20vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 20vh 20vh 50px 50px 20vh 20vh 20vh;
   }
 
   .solid-bg {
@@ -194,7 +194,7 @@ h1 {
   }
 
   .grid-item {
-    grid-column: span 7;
+    grid-column: span 4;
   }
 
   .grid-item.intro {
@@ -202,7 +202,7 @@ h1 {
   }
 
   .grid-item.long {
-    grid-column: span 7;
+    grid-column: span 4;
   }
 
   .grid-icon {
@@ -210,30 +210,42 @@ h1 {
   }
 
   .mastodon {
+    grid-row: 3;
     grid-column: 1;
   }
 
   .twitter {
+    grid-row: 3;
     grid-column: 2;
   }
 
   .reddit {
+    grid-row: 3;
     grid-column: 3;
   }
 
   .discord {
+    grid-row: 3;
     grid-column: 4;
   }
 
+  .stackoverflow {
+    grid-row: 4;
+    grid-column: 1;
+  }
+
   .github {
-    grid-column: 5;
+    grid-row: 4;
+    grid-column: 2;
   }
 
   .threads {
-    grid-column: 6;
+    grid-row: 4;
+    grid-column: 3;
   }
 
   .ko-fi {
-    grid-column: 7;
+    grid-row: 4;
+    grid-column: 4;
   }
 }
