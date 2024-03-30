@@ -28,7 +28,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
             background-color: #f0f0f0;
         }
         .choose {
@@ -62,6 +61,14 @@
         }
     </style>
     <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const question = prompt('Should I ...?');
+            if (question === '') {
+                question = 'kill myself';
+            }
+            const title_section = document.querySelector('.choose h1');
+            title_section.textContent = 'Should I ' + question + '? 🤔';
+        });
         const choose = document.querySelector('.choose');
         const yes = document.querySelector('.yes');
         const no = document.querySelector('.no');
