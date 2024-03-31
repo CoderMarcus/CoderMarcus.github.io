@@ -95,6 +95,7 @@ hr {
     padding: 10px;
     border-radius: 5px;
     align-self: center;
+    color: rgb(255, 255, 255);
 }
 
 .more-icon:hover {
