@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgb(27, 23, 20);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 5px;
+}
+
+.controls div {
+    width: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.controls div:hover {
+    background-color: rgb(47, 42, 38);
+    transition: background-color 0.2s ease;
+}
+
+.address-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 5px 10px 5px 10px;
+    margin: 5px;
+    align-items: center;
+    background: rgb(47, 42, 38);
+    border-radius: 5px;
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+.address-bar .spacer {
+    flex-grow: 1;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 5px 5px 5px 10px;
+    margin: 5px;
+    align-items: center;
+    background: rgb(47, 42, 38);
+    border-radius: 5px;
+}
+
+.search-bar input {
+    background: rgb(47, 42, 38);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Chivo', sans-serif;
+    width: auto;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+@media (max-width: 720px) {
+    .search-bar input {
+        width: 5em;
+    }
+}
+
+@media (max-width: 610px) {
+    .search-bar {
+        display: none;
+    }
+}
+
+@media (max-width: 482px) {
+    .controls {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0.5em;
+        padding: 5px;
+    }
+
+    .controls div {
+        height: 1.5em;
+    }
+}
