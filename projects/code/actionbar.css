@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+.actionbar {
+    background-color: rgb(25, 25, 25);
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 5px 10px 5px 10px;
+    font-family: 'Chivo', sans-serif;
+}
+
+.new-item {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.new-item:hover {
+    background-color: rgb(39, 39, 39);
+    transition: background-color 0.2s ease;
+}
+
+hr {
+    margin: 5px 0px 5px 0px;
+    color: rgb(43, 43, 43);
+}
+
+.drop-down {
+    transform: scale(0.75);
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.quick-actions div {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.quick-actions div:hover {
+    background-color: rgb(39, 39, 39);
+    transition: background-color 0.2s ease;
+}
+
+.organize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.sort-options {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sort-options:hover {
+    background-color: rgb(39, 39, 39);
+    transition: background-color 0.2s ease;
+}
+
+.view-options {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.view-options:hover {
+    background-color: rgb(39, 39, 39);
+    transition: background-color 0.2s ease;
+}
+
+.more-icon {
+    padding: 10px;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.more-icon:hover {
+    background-color: rgb(39, 39, 39);
+    transition: background-color 0.2s ease;
+}
+
+.actionbar .spacer {
+    flex-grow: 1;
+}
+
+.view-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+.view-details:hover {
+    background-color: rgb(39, 39, 39);
+    transition: background-color 0.2s ease;
+}
+
+@media (max-width: 755px) {
+    .view-options {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .sort-options {
+        display: none;
+    }
+    .second-divider {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .quick-actions .delete-qa {
+        display: none;
+    }
+}
+
+@media (max-width: 505px) {
+    .quick-actions .share-qa {
+        display: none;
+    }
+}
+
+@media (max-width: 470px) {
+    .quick-actions .rename-qa {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .quick-actions .paste-qa {
+        display: none;
+    }
+}
+
+@media (max-width: 390px) {
+    .quick-actions .copy-qa {
+        display: none;
+    }
+}
+
+@media (max-width: 340px) {
+    .quick-actions .cut-qa {
+        display: none;
+    }
+
+    .first-divider {
+        display: none;
+    }
+}
