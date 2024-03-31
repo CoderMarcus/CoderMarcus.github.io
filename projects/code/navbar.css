@@ -38,6 +38,7 @@
     border-radius: 5px;
     flex-grow: 1;
     word-break: break-word;
+    font-family: 'Chivo', sans-serif;
 }
 
 .address-bar .spacer {
