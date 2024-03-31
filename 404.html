@@ -5,7 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>404 Page Not Found</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Chivo+Mono" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono" rel="stylesheet">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,700;1,400&display=swap');
             body {
@@ -58,16 +60,16 @@
             }
             @media (max-width: 500px) {
                 img {
-                    float: none;  /* Remove the float for smaller screens */
-                    display: block;  /* Make the image a block element */
+                    float: none;
+                    display: block;
                 }
                 .centered {
-                    width: 80%;  /* Reduce the width of the div element for smaller screens */
+                    width: 80%;
                 }
             }
         </style>
-        <link href="/private/assets/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-        <link href="/private/assets/webclip.png" rel="apple-touch-icon"/>   
+        <link href="static/assets/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+        <link href="static/assets/webclip.png" rel="apple-touch-icon"/>
     </head>
     <body>
         <div class="centered">
@@ -75,9 +77,13 @@
                 <h1 class="title text">Oops!</h1>
                 <p class="subtitle text">Looks like you've stumbled upon a page that doesn't exist.</p>
                 <p class="error text">404 Page Not Found</p>
-                <p class="link text">Click the person to go back.</p>
+                <p class="link text">
+                    Use your browser's back button to go back.<br>
+                    If you think this is a mistake, please
+                    <a class="link" href="mailto: camuise@matchaflavored.site">contact me</a>.
+                </p>
             </div>
-            <img src="https://github.com/Marcus5408/Marcus5408.github.io/private/assets/falling_person.svg" alt="fallingPerson" id="fallingPerson" width=40% height=40%>
+            <img src="static/assets/falling_person.svg" alt="fallingPerson" id="fallingPerson" width=40% height=40%>
         </div>
     </body>
 </html>
