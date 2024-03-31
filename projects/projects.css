@@ -2,7 +2,8 @@
 
 body {
   background-color: black;
-  height: max-content;
+  height: 100vh;
+  margin: 0;
 }
 
 .title {
@@ -92,7 +93,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.75);
   border-radius: 12px;
   color: rgb(255, 255, 255);
   text-shadow: none;
