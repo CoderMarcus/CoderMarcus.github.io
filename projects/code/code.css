@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(16, 9, 0);
+    margin: 0;
+    height: 100vh;
+    border: 1px solid rgb(91, 51, 35);
+    border-radius: 5px;
+    gap: 0;
+}
