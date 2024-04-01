@@ -29,7 +29,7 @@
 }
 
 .project img {
-    object-fit: cover;
+    object-fit: contain;
     width: 8em;
     height: 8em;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
