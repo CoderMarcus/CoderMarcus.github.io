@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+.content {
+    background-color: rgb(25, 25, 25);
+    height: calc(100vh - 1em);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1em;
+    font-family: 'Chivo', sans-serif;
+}
+
+.project {
+    width: 8.5em;
+    height: 10em;
+    margin: 1em;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.25em;
+    padding: 5px;
+    background-color: none;
+    transition: background-color 0.2s ease;
+}
+
+.project:hover {
+    background-color: rgb(50, 50, 50);
+    transition: background-color 0.2s ease;
+}
+
+.project img {
+    object-fit: cover;
+    width: 8em;
+    height: 8em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.project .project-name {
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    text-align: center;
+}

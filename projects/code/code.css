@@ -1,8 +1,27 @@
 body {
-    background-color: rgb(16, 9, 0);
+    background-color: rgb(25, 25, 25);
     margin: 0;
     height: 100vh;
     border: 1px solid rgb(91, 51, 35);
     border-radius: 5px;
     gap: 0;
+}
+
+hr .divider1 {
+    color: rgb(16, 9, 0);
+    height: 0.1px;
+    margin: 0;
+    padding: 0;
+}
+
+hr .divider2 {
+    color: rgb(57, 57, 57);
+    height: 0.1px;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
