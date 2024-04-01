@@ -54,7 +54,7 @@
     padding: 0;
 }
 
-.window-control div {
+.window-control > * {
     width: 2em;
     display: flex;
     justify-content: center;
@@ -62,7 +62,7 @@
     padding: 5px;
 }
 
-.window-control div:hover {
+.window-control > *:hover {
     background-color: rgb(30, 22, 14);
     transition: background-color 0.2s ease;
 }
