@@ -4,15 +4,15 @@
     background-color: rgb(25, 25, 25);
     height: calc(100vh - 1em);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, 1em);
+    grid-gap: none; /* Adjust the value to reduce the space between rows */
     font-family: 'Chivo', sans-serif;
 }
 
 .project {
     width: 8.5em;
     height: 10em;
-    margin: 1em;
+    margin: 0;
     align-items: center;
     display: flex;
     justify-content: center;
