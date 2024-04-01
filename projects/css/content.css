@@ -19,12 +19,12 @@
 
 .project {
     width: 8.5em;
-    height: 10em;
+    height: 11em;
     margin: 0;
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column;/* Aligns the project to the top */
     gap: 0.25em;
     padding: 5px;
     background-color: none;
@@ -44,7 +44,10 @@
 }
 
 .project .project-name {
+    width: 8.5em;
     color: rgb(255, 255, 255);
     font-size: 1em;
     text-align: center;
+    text-wrap: wrap;
+    word-wrap: break-word;
 }
