@@ -39,7 +39,7 @@ body {
   display: flex;
   width: auto;
   height: 400px;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: scroll;
   gap: 1em;
   padding: 1em;
