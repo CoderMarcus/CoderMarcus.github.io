@@ -1,0 +1,141 @@
+@font-face {
+  font-family: 'HYWenHei-85W';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../../static/assets/HYWenHei-85W.ttf) format('truetype');
+}
+
+body {
+  background-color: black;
+  /* set bg black */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-family: 'HYWenHei-85W';
+}
+
+.grid {
+  background: hsl(36, 100%, 99%);
+  width: 100%;
+  max-width: 1500px;
+  height: 1000px;
+  display: grid;
+  gap: 1.5vw;
+  padding: 1vw;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "hero hero hero hero aside2 aside2"
+    "hero hero hero hero aside2 aside2"
+    "hero hero hero hero aside2 aside2"
+    "hero hero hero hero aside2 aside2"
+    "aside3 aside3 aside4 aside4 aside5 aside5 ";
+}
+
+.item {
+  border: 2px solid #222222;
+  border-radius: 10px;
+  filter: brightness(100%);
+  transition: border 0.5s ease;
+  transition: border-radius 0.5s ease;
+  transition: filter 0.5s ease;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  background-color: #222222;
+  filter: brightness(50%);
+  border-radius: 8px;
+  transition: filter 0.5s ease;
+  transition: border-radius 0.5s ease;
+}
+
+.grid-item-content {
+  position: absolute;
+  color: #000000;
+  transition: color 0.5s ease;
+  font-weight: normal;
+  text-shadow: none;
+  transition: text-shadow 0.5s ease;
+  /* make text an outline */
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+.item:hover {
+  border: 5px solid #c9c9c9c9;
+  transition: filter 0.5s ease;
+  transition: border 0.5s ease;
+}
+
+.item:hover .bg {
+  border-radius: 5px;
+  filter: brightness(80%);
+  transition: border-radius 0.5s ease;
+  transitiin: filter 0.5s ease;
+}
+
+.grid-item:hover .grid-item-content {
+  color: #ffffff;
+  transition: color 0.5s ease;
+  /* add drop shadow */
+  text-shadow: 5px 5px 5px #00000081;
+  transition: text-shadow 0.5s ease;
+  -webkit-text-stroke: none;
+}
+
+.grid .item:nth-child(1) {
+  grid-area: hero;
+}
+.grid .item:nth-child(2) {
+  grid-area: aside2;
+}
+
+.grid .item:nth-child(3) {
+  grid-area: aside3;
+}
+.grid .item:nth-child(4) {
+  grid-area: aside4;
+}
+
+.grid .item:nth-child(5) {
+  grid-area: aside5;
+}
+
+@media screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "hero   hero   hero   hero"
+      "hero   hero   hero   hero"
+      "aside2 aside2 aside2 aside3"
+      "aside4 aside4 aside5 aside5";
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "hero   hero   hero"
+      "hero   hero   hero"
+      "aside2 aside2 aside2"
+      "aside3 aside3 aside3"
+      "aside4 aside4 aside4"
+      "aside5 aside5 aside5";
+  }
+}
