@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'HYWenHei-85W';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../../static/assets/HYWenHei-85W.ttf) format('truetype');
+}
+
+body {
+    background: radial-gradient(circle at 52.1% -29.6%, rgb(144, 17, 105) 0%, rgb(51, 0, 131) 100.2%);
+    height: 100vh;
+    width: 100vw;
+    font-family: 'HYWenHei-85W';
+    color: white;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+p {
+    max-width: 40%;
+}
+
+a {
+    color: cyan;
+    text-decoration: none;
+}
