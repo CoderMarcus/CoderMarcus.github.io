@@ -10,8 +10,8 @@ body {
   background-color: black; /* set bg black */
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 h1 {
@@ -177,7 +177,7 @@ h1 {
 /* Media query for mobile devices */
 @media (max-width: 1000px) {
   .grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 20vh 20vh 50px 50px 20vh 20vh 20vh;
   }
 
@@ -191,7 +191,6 @@ h1 {
 
   .grid-item.intro {
     grid-row: span 2;
-    grid-column: span 2;
   }
 
   .grid-item.long {
@@ -204,22 +203,22 @@ h1 {
 
   .mastodon {
     grid-row: 3;
-    grid-column: 2;
+    grid-column: 1;
   }
 
   .twitter {
     grid-row: 3;
-    grid-column: 3;
+    grid-column: 2;
   }
 
   .reddit {
     grid-row: 3;
-    grid-column: 4;
+    grid-column: 3;
   }
 
   .discord {
     grid-row: 3;
-    grid-column: 0;
+    grid-column: 4;
   }
 
   .stackoverflow {
